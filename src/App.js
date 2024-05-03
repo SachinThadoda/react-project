@@ -9,7 +9,7 @@ import Welcome from './components/WelcomePage/WelcomePage'
 function App() {
   return (
     <><NavBar /><Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/welcome" element={<Welcome />} />
