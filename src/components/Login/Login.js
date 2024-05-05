@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { login } from '../Api/Api';
 import { useNavigate } from 'react-router-dom';
-import { FaFacebookF } from 'react-icons/fa';
-
+import { FaFacebookF, FaGoogle, FaTwitter } from 'react-icons/fa';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -74,7 +73,7 @@ function Login() {
     //   </form>
     //   <span>{response}</span>
     // </div>
-    <section class="vh-100">
+    <section class="vh-100 mt-5">
       {/* <div class="container-fluid h-custom"> */}
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-3 col-lg-3 col-xl-3">
@@ -84,18 +83,18 @@ function Login() {
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <form>
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-              <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+              <p className="lead fw-normal mb-0 me-3" style={{ fontFamily: 'Roboto, sans-serif' ,marginRight: '20px'}}> Sign in with</p>
 
-              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998' }}>
-              <FaFacebookF color="white" size={20} />
+              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <FaGoogle color="white" size={20} />
               </button>
 
-              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998' }}>
-                <i className="fab fa-facebook-f"></i>
+              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <FaFacebookF color="white" size={20} />
               </button>
 
-              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998' }}>
-                <i className="fab fa-facebook-f"></i>
+              <button type="button" className="btn btn-facebook rounded-circle mx-1" style={{ width: '40px', height: '40px', backgroundColor: '#3b71ca', borderColor: '#3b5998', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <FaTwitter color="white" size={20} />
               </button>
 
             </div>
@@ -126,7 +125,7 @@ function Login() {
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                 style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>Login</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/signup"
+              <p class="medium fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/signup"
                 class="link-danger">Register</a></p>
             </div>
           </form>
