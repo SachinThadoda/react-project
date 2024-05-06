@@ -5,6 +5,7 @@ import NavBar from './components/Navbar/Navbar'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import Welcome from './components/WelcomePage/WelcomePage'
+import SampleLogin from './components/Login/SampleLogin'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/welcome" element={<Welcome />} />
+      <Route path="/sample" element={<SampleLogin />} />
     </Routes></>
   )
 }
