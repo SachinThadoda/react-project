@@ -58,42 +58,42 @@ function SignUp() {
       <h2>Sign Up</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input
+        <input className='signUpInput'
           type="text"
           placeholder="Username"
           value={username}
           onChange={handleUsernameChange}
           required
         />
-        <input
+        <input className='signUpInput'
           type="text"
           placeholder="Email"
           value={email}
           onChange={handleEmailChange}
           required
         />
-        <input
+        <input className='signUpInput'
           type="text"
           placeholder="Department"
           value={department}
           onChange={handleDepartmentChange}
           required
         />
-        <input
+        <input className='signUpInput'
           type="password"
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
           required
         />
-        <input
+        <input className='signUpInput'
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
           required
         />
-        <button type="submit">Sign Up</button>
+        <button className='signUpButton' type="submit">Sign Up</button>
       </form>
     </div>
   );

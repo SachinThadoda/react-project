@@ -1,15 +1,6 @@
-.container {
-    max-width: 400px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  button {
+.signUpInput[type="text"],
+.signUpInput[type="password"],
+.signUpButton {
     display: block;
     width: 100%;
     padding: 10px;
@@ -18,15 +9,29 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #28a745;
+}
+
+.signUpButton {
+    background-color: #47a7f5;
     color: #fff;
     border: none;
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.signUpButton:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+
+.signUpButton:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}

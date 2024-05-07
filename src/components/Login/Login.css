@@ -1,13 +1,33 @@
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+.loginInput[type="text"],
+.loginInput[type="password"],
+.loginButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.h-custom {
-    height: calc(100% - 73px);
+.loginButton {
+    background-color: #47a7f5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.loginButton:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+
+.loginButton:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
 }
 
 @media (max-width: 450px) {
