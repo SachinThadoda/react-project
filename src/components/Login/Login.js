@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { login } from '../Api/Api';
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
+
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 
 function Login() {
@@ -56,7 +56,7 @@ function Login() {
           </div>
           <button className="loginButton mt-4 fs-5" type="submit">Login</button>
           <div className="divider mt-2 mb-2">Or</div>
-          <button className="googleButton" type="submit"><FaGoogle className='googleIcon' />Continue With Google</button>
+          <button className="googleButton" type="submit"><img className='googleIcon' src='google.svg' alt='' />Continue With Google</button>
         </form>
         <span>{response}</span>
       </div>
