@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 // import './Navbar.css';
 
@@ -11,13 +12,13 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/home" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Home</a>
+            <Link to="/home" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/login" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Login</a>
+            <Link to="/Login" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Login</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/signup" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Sign Up</a>
+            <Link to="/signup" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Sign Up</Link>
           </li>
         </ul>
       </div>

@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:9090/api';
 
 export async function signUp(email, username, depart, password) {
   try {
-    const response = await fetch(`${BASE_URL}/users/adduser`, {
+    const response = await fetch(`${BASE_URL}/users/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
