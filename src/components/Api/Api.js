@@ -19,7 +19,7 @@ export async function signUp(email, username, depart, password) {
   }
 }
 
-export async function login(password, email) {
+export async function loginApi(password, email) {
   try {
 
     const formdata = new FormData();

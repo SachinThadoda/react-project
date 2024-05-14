@@ -15,7 +15,7 @@ function Navbar() {
             <Link to="/home" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/Login" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Login</Link>
+            <Link to="/login" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Login</Link>
           </li>
           <li className="nav-item">
             <Link to="/signup" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Sign Up</Link>

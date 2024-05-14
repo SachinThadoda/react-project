@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import NavBar from '../HomeNavbar/HomeNavbar'
 import { signUp } from '../Api/Api';
 import './SignUp.css';
 
@@ -54,7 +55,6 @@ function SignUp() {
       console.log(error);
       setError(error.message);
     } finally {
-      // Ensure loading state is set to false after at least 0.5 seconds
       setTimeout(() => {
         setLoading(false);
       }, 500);
@@ -62,6 +62,7 @@ function SignUp() {
   };
 
   return (
+    <><NavBar />
     <div className="outer-container">
       <div className="container">
         <h2 className="text-center">Sign Up</h2>
@@ -85,6 +86,7 @@ function SignUp() {
       </div>
       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="logo" className="logo" />
     </div>
+    </>
   );
 }
 

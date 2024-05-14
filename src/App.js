@@ -1,20 +1,27 @@
 import React from 'react'
-import { Route, Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from './Components/Home/Home'
-import NavBar from './Components/Navbar/Navbar'
 import Login from './Components/Login/Login'
 import SignUp from './Components/SignUp/SignUp'
 import Welcome from './Components/WelcomePage/WelcomePage'
+import { AuthProvider } from './Components/Context/AuthContext'
+import PrivateRoute from './Components/Context/PrivateRoute'
+import LoadingSpinner from './Components/Context/LoadingSpinner'
 
 function App() {
   return (
-    <><NavBar /><Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/welcome" element={<Welcome />} />
-    </Routes></>
+    <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/spinner" element={<LoadingSpinner />} />
+          <Route element={<PrivateRoute  />}>
+            <Route path="/welcome" element={<Welcome />} />
+          </Route>
+        </Routes>
+    </AuthProvider>
   )
 }
 
