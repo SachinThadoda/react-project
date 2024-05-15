@@ -12,6 +12,7 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -30,7 +31,7 @@ function Login() {
       console.log(response);
       if (response.success) {
         setCookiesAndData(response);
-        navigate('/welcome');
+        navigate('/home');
       } else {
         setError(response.message);
       }
@@ -42,6 +43,11 @@ function Login() {
         setLoading(false);
       }, 400);
     }
+  };
+
+  const handleForgotPasswordClick = (e) => {
+    e.preventDefault();
+    setShowForgotPassword(true);
   };
 
   return (
@@ -60,18 +66,27 @@ function Login() {
               <input className="loginInput" type="password" placeholder="Enter Password" value={password} onChange={handlePasswordChange} required />
             </div>
             <button className="loginButton mt-4 fs-5" type="submit">Login</button>
-            {loading && (
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            )}
-            {error && !loading && <p className="error">{error}</p>}
+            <div className="d-flex justify-content-between">
+              <div>{loading && (
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>)}
+                {error && !loading && <p className="text-danger">{error}</p>}</div>
+              <a href='/' className="forgotPassword" onClick={handleForgotPasswordClick}>Forgot Password?</a>
+            </div>
             <div className="divider mt-2 mb-2">Or</div>
             <button className="googleButton" type="submit"><img className='googleIcon' src='google.svg' alt='' />Continue With Google</button>
             <p className="registerLink">Don't have an account? <Link to="/signup">Sign Up</Link> </p>
           </form>
         </div>
       </div>
+      {showForgotPassword && (
+        <div className="container mt-3">
+          <h3>Forgot Password</h3>
+          <p>Include your HTML content here for the forgot password form.</p>
+          {/* Add your HTML content for the forgot password form */}
+        </div>
+      )}
     </>
   );
 }

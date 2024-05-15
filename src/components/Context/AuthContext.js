@@ -11,10 +11,10 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        
         const cookies = new Cookies();
+        const userData = sessionStorage.getItem('userData');
         const jwtToken = cookies.get('_1fj2Ew'); 
-        if (jwtToken) {
+        if (jwtToken && userData) {
             setIsAuthenticated(true);
         } else {
             setIsAuthenticated(false);
@@ -29,11 +29,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
-        // const cookies = new Cookies();
-        // cookies.remove('_1fj2Ew');
-        // cookies.remove('_JdgE54');
-        // cookies.remove('_3mhb65');
-        // sessionStorage.removeItem('userData');
+        const cookies = new Cookies();
+        cookies.remove('_1fj2Ew');
+        cookies.remove('_JdgE54');
+        cookies.remove('_3mhb65');
+        sessionStorage.removeItem('userData');
         setIsAuthenticated(false);
     };
 

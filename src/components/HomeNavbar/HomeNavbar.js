@@ -12,7 +12,7 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item active">
-            <Link to="/home" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Home</Link>
+            <Link to="/welcome" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Home</Link>
           </li>
           <li className="nav-item">
             <Link to="/login" className="nav-link" style={{ fontSize: '20px', fontWeight: 'bold', color: '#000' }}>Login</Link>
