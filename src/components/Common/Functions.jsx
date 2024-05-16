@@ -10,5 +10,5 @@ export function setCookiesAndData(response){
     cookies.set("_1fj2Ew", x[0], 1);
     cookies.set("_JdgE54", btoa(x[1]), 1);
     cookies.set("_3mhb65", x[2], 1);
-    sessionStorage.setItem('userData', JSON.stringify({ userData: response.userData }));
+    localStorage.setItem('userData', JSON.stringify({ userData: response.userData }));
 }

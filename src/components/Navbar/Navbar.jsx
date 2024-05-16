@@ -6,7 +6,7 @@ import './Navbar.css';
 
 function Navbar() {
 
-    const userData = sessionStorage.getItem('userData')
+    const userData = localStorage.getItem('userData')
     const username = JSON.parse(userData).userData.username;
     const auth = useAuth();
     const handleLogout = () => {

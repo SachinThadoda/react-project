@@ -61,3 +61,24 @@ export async function forgotPassword(email){
     throw new Error('Something went wrong');
   }
 }
+
+export async function verifyOtp(email){
+  try {
+
+    const formdata = new FormData();
+    formdata.append("email", email);
+
+    const response = await fetch(`${BASE_URL}/users/forgotpassword`, {
+      method: "POST",
+      body: formdata,
+      redirect: "follow"
+    });
+
+    if (!response.ok) {
+      throw new Error('Something went wrong');
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+}

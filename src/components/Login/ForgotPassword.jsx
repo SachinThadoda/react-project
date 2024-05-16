@@ -12,14 +12,14 @@ const ForgotPassword = () => {
         setEmail(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, onSuccess) => {
         e.preventDefault();
         setLoading(true);
         try {
             const response = await forgotPassword(email);
             console.log(response);
             if (response.success) {
-                
+                onSuccess(true);
             } else {
                 setError(response.message);
             }

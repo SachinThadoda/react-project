@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const cookies = new Cookies();
-        const userData = sessionStorage.getItem('userData');
+        const userData = localStorage.getItem('userData');
         const jwtToken = cookies.get('_1fj2Ew'); 
         if (jwtToken && userData) {
             setIsAuthenticated(true);
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         cookies.remove('_1fj2Ew');
         cookies.remove('_JdgE54');
         cookies.remove('_3mhb65');
-        sessionStorage.removeItem('userData');
+        localStorage.removeItem('userData');
         setIsAuthenticated(false);
     };
 
