@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import NavBar from '../HomeNavbar/HomeNavbar'
-import { signUp } from '../Api/Api';
+import { signUp } from '../Api/Api'
 import './SignUp.css';
 
 function SignUp() {
