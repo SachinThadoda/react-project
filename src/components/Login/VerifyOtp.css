@@ -1,0 +1,29 @@
+.verifyButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.verifyButton {
+    background-color: #47a7f5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.verifyButton:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+
+.verifyButton:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+}

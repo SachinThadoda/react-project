@@ -5,7 +5,7 @@ import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import NavBar from '../HomeNavbar/HomeNavbar'
 import { setCookiesAndData } from '../Common/Functions';
 import ForgotPassword from './ForgotPassword'
-import { verifyOtp } from './VerifyOtp';
+import VerifyOtp from './VerifyOtp';
 import './Login.css';
 
 function Login() {
@@ -26,17 +26,13 @@ function Login() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-
   const handleForgotPasswordClick = (e) => {
     e.preventDefault();
     setState('forgotPassword');
   };
 
-  const handleShowOtp = (success) => {
-    if (success) {
-      setShowOtp(true);
-    }
+  const handleShowOtp = () => {
+    setState('otp');
   };
 
   const handleSubmit = async (e) => {
@@ -99,13 +95,13 @@ function Login() {
         );
 
       case 'forgotPassword':
-        return <ForgotPassword onSuccess={() => setState('otp')} />;
+        return <ForgotPassword onSuccess={handleShowOtp} />;
 
       case 'otp':
-        return <verifyOtp  />;
+        return <VerifyOtp />;
 
       case 'changePassword':
-        // return <ChangePassword onSuccess={() => setState('login')} />;
+      // return <ChangePassword onSuccess={() => setState('login')} />;
 
       default:
         return null;

@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { verifyOtp } from '../Api/Api'
 import './VerifyOtp.css'
 
-const Otp = () => {
-
-    const [otp, setOtp] = useState([0, 0, 0, 0, 0, 0]);
-    const [timerCount, setTimer] = React.useState(60);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+const VerifyOtp = () => {
+    const [otp, setOtp] = useState(['', '', '', '', '', '']);
+    const [timer, setTimer] = useState(60);
     const [disable, setDisable] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
         let interval = setInterval(() => {
             setTimer((lastTimerCount) => {
                 lastTimerCount <= 1 && clearInterval(interval);
@@ -22,151 +19,66 @@ const Otp = () => {
         return () => clearInterval(interval);
     }, [disable]);
 
-    const resendOtp = () => {
-
-    }
-
-    const handleSubmit = async (e, onSuccess) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            const response = await verifyOtp(otp);
-            console.log(response);
-            if (response.success) {
-                onSuccess(true);
-            } else {
-                setError(response.message);
+    const handleOtpChange = (index, value) => {
+        if (!isNaN(value) && value.length <= 1) {
+            const newOtp = [...otp];
+            newOtp[index] = value;
+            setOtp(newOtp);
+            if (value !== '' && index < 5) {
+                document.getElementById(`otp-input-${index + 1}`).focus();
             }
-        } catch (error) {
-            console.log(error);
-            setError(error.message);
-        } finally {
-            setTimeout(() => {
-                setLoading(false);
-            }, 400);
         }
-    }
+    };
+
+    const handleResendOtp = () => {
+        if (disable) return;
+
+    };
+
+    const handleVerifyOtp = () => {
+        // Implement verify OTP functionality here
+        console.log("Verify OTP");
+    };
+
     return (
-        <>
-            <div className="flex justify-center items-center w-screen h-screen bg-gray-50">
-                <div className="bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
-                    <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
-                        <div className="flex flex-col items-center justify-center text-center space-y-2">
-                            <div className="font-semibold text-3xl">
-                                <p>Email Verification</p>
-                            </div>
-                            <div className="flex flex-row text-sm font-medium text-gray-400">
-                                <p>We have sent a code to your email</p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <form>
-                                <div className="flex flex-col space-y-16">
-                                    <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
-                                        <div className="w-16 h-16 ">
-                                            <input
-                                                maxLength="1"
-                                                className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="text"
-                                                name=""
-                                                id=""
-                                                onChange={(e) =>
-                                                    setOtp([
-                                                        e.target.value,
-                                                        otp[1],
-                                                        otp[2],
-                                                        otp[3],
-                                                    ])
-                                                }
-                                            ></input>
-                                        </div>
-                                        <div className="w-16 h-16 ">
-                                            <input
-                                                maxLength="1"
-                                                className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="text"
-                                                name=""
-                                                id=""
-                                                onChange={(e) =>
-                                                    setOtp([
-                                                        otp[0],
-                                                        e.target.value,
-                                                        otp[2],
-                                                        otp[3],
-                                                    ])
-                                                }
-                                            ></input>
-                                        </div>
-                                        <div className="w-16 h-16 ">
-                                            <input
-                                                maxLength="1"
-                                                className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="text"
-                                                name=""
-                                                id=""
-                                                onChange={(e) =>
-                                                    setOtp([
-                                                        otp[0],
-                                                        otp[1],
-                                                        e.target.value,
-                                                        otp[3],
-                                                    ])
-                                                }
-                                            ></input>
-                                        </div>
-                                        <div className="w-16 h-16 ">
-                                            <input
-                                                maxLength="1"
-                                                className="w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700"
-                                                type="text"
-                                                name=""
-                                                id=""
-                                                onChange={(e) =>
-                                                    setOtp([
-                                                        otp[0],
-                                                        otp[1],
-                                                        otp[2],
-                                                        e.target.value,
-                                                    ])
-                                                }
-                                            ></input>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-col space-y-5">
-                                        <div>
-                                            <a href='/'
-                                                onClick={() => handleSubmit()}
-                                                className="flex flex-row cursor-pointer items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm"
-                                            >
-                                                Verify Account
-                                            </a>
-                                        </div>
-
-                                        <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
-                                            <p>Didn't recieve code?</p>{" "}
-                                            <a href='/'
-                                                className="flex flex-row items-center"
-                                                style={{
-                                                    color: disable ? "gray" : "blue",
-                                                    cursor: disable ? "none" : "pointer",
-                                                    textDecorationLine: disable ? "none" : "underline",
-                                                }}
-                                                onClick={() => resendOtp()}
-                                            >
-                                                {disable ? `Resend OTP in ${timerCount}s` : "Resend OTP"}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+        <div className="container text-center mt-5">
+            <h2>Email Verification</h2>
+            <p>We have sent a code to your email</p>
+            <div className="row justify-content-center">
+                {otp.map((digit, index) => (
+                    <div className="col-md-2 mb-3" key={index}>
+                        <input
+                            type="text"
+                            value={digit}
+                            onChange={(e) => handleOtpChange(index, e.target.value)}
+                            className="form-control text-center border-dark"
+                            maxLength={1}
+                            id={`otp-input-${index}`}
+                        />
                     </div>
-                </div>
+                ))}
             </div>
-        </>
-    )
-}
+            <div className="flex flex-row items-center justify-center text-center text-sm font-medium space-x-1 text-gray-500">
+                <p>Didn't recieve code?</p>{" "}
+                <a
+                    className="flex flex-row items-center"
+                    style={{
+                        color: disable ? "gray" : "blue",
+                        cursor: disable ? "none" : "pointer",
+                        textDecorationLine: disable ? "none" : "underline",
+                    }}
+                    onClick={() => handleResendOtp()}
+                >
+                    {disable ? `Resend OTP in ${timer}s` : "Resend OTP"}
+                </a>
+            </div>
+            <div className="row justify-content-center">
+                <button className="verifyButton mt-4 fs-5" type="submit">Verify Otp</button>
+            </div>
+        </div>
+    );
+};
 
-export default Otp
+export default VerifyOtp;
+
+
