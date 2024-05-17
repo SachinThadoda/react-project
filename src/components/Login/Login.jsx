@@ -2,21 +2,22 @@ import React, { useState } from 'react';
 import { useAuth } from '../Context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
-import NavBar from '../HomeNavbar/HomeNavbar'
 import { setCookiesAndData } from '../Common/Functions';
+import NavBar from '../HomeNavbar/HomeNavbar'
 import ForgotPassword from './ForgotPassword'
 import VerifyOtp from './VerifyOtp';
+import ChangePassword from './ChangePassword';
+import ChangePassSuccess from './ChangePassSuccess';
 import './Login.css';
 
 function Login() {
   const auth = useAuth();
+
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [showForgotPassword, setShowForgotPassword] = useState(false);
-  const [showOtp, setShowOtp] = useState(false);
   const [state, setState] = useState('login');
 
   const handleEmailChange = (e) => {
@@ -31,16 +32,24 @@ function Login() {
     setState('forgotPassword');
   };
 
-  const handleShowOtp = () => {
+  const handleShowOtp = (email) => {
+    setEmail(email);
     setState('otp');
   };
+
+  const handleChangePassword = () => {
+    setState('changePassword');
+  }
+
+  const handleChangePassSuccess = () => {
+    setState('changePassSuccess');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const response = await auth.login(password, email);
-      console.log(response);
       if (response.success) {
         setCookiesAndData(response);
         navigate('/home');
@@ -58,6 +67,7 @@ function Login() {
   };
 
   const renderComponent = () => {
+
 
     switch (state) {
       case 'login':
@@ -87,7 +97,7 @@ function Login() {
               </div>
               <div className="divider mt-2 mb-2">Or</div>
               <button className="googleButton" type="button">
-                <img className='googleIcon' src='google.svg' alt='' />Continue With Google
+                <img className='googleIcon' src='google.svg' alt='google' />Continue With Google
               </button>
               <p className="registerLink">Don't have an account? <Link to="/signup">Sign Up</Link></p>
             </form>
@@ -98,10 +108,13 @@ function Login() {
         return <ForgotPassword onSuccess={handleShowOtp} />;
 
       case 'otp':
-        return <VerifyOtp />;
+        return <VerifyOtp onSuccess={handleChangePassword} email={email} />;
 
       case 'changePassword':
-      // return <ChangePassword onSuccess={() => setState('login')} />;
+        return <ChangePassword onSuccess={handleChangePassSuccess} email={email} />;
+
+      case 'changePassSuccess':
+        return <ChangePassSuccess />;
 
       default:
         return null;

@@ -17,11 +17,8 @@ const ForgotPassword = ({onSuccess}) => {
         setLoading(true);
         try {
             const response = await forgotPassword(email);
-            console.log(response);
             if (response.success) {
-                onSuccess();
-                //do some logic
-
+                onSuccess(email);
             } else {
                 setError(response.message);
             }

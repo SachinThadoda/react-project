@@ -41,7 +41,7 @@ export async function loginApi(password, email) {
   }
 }
 
-export async function forgotPassword(email){
+export async function forgotPassword(email) {
   try {
 
     const formdata = new FormData();
@@ -62,13 +62,36 @@ export async function forgotPassword(email){
   }
 }
 
-export async function verifyOtp(email){
+export async function verifyOtp(email, otp) {
   try {
 
     const formdata = new FormData();
     formdata.append("email", email);
+    formdata.append("otp", otp);
 
-    const response = await fetch(`${BASE_URL}/users/forgotpassword`, {
+    const response = await fetch(`${BASE_URL}/users/otpverification`, {
+      method: "POST",
+      body: formdata,
+      redirect: "follow"
+    });
+
+    if (!response.ok) {
+      throw new Error('Something went wrong');
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error('Something went wrong');
+  }
+}
+
+export async function changePassword(email, newpass) {
+  try {
+
+    const formdata = new FormData();
+    formdata.append("email", email);
+    formdata.append("newpass", newpass);
+
+    const response = await fetch(`${BASE_URL}/users/changepassotp`, {
       method: "POST",
       body: formdata,
       redirect: "follow"

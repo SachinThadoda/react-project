@@ -2,6 +2,8 @@ import React from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/AuthContext';
+import { FiUser } from "react-icons/fi";
+import { SlLogout } from "react-icons/sl";
 import './Navbar.css';
 
 function Navbar() {
@@ -15,7 +17,8 @@ function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/home" className="navbar-brand">Home</Link>
+            <Link to="/home" className="navbar-brand">
+                <img src="favicon.ico" alt="React App" className="navbar-brand" style={{ width: "55px", height: "55px" }} /></Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item dropdown">
@@ -25,10 +28,10 @@ function Navbar() {
                                 <FaUserCircle className="user-icon" />
                             </div>
                         </span>
-                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <Link to="/profile" className="dropdown-item">Profile</Link>
+                        <div className="dropdown-menu dropdown-menu-right text-left" aria-labelledby="navbarDropdown">
+                            <Link to="/profile" className="dropdown-item"><FiUser className='mr-2' />Profile</Link>
                             <div className="dropdown-divider"></div>
-                            <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                            <button className="dropdown-item" onClick={handleLogout}><SlLogout className='mr-2' />Logout</button>
                         </div>
                     </li>
                 </ul>
